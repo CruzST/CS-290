@@ -38,16 +38,6 @@ dt {
     text-align: center;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type="number"] {
-    -moz-appearance:textfield;
-}
-
 input[type="radio"], input[type="submit"] {
     margin: 10px;
 }
@@ -59,6 +49,8 @@ fieldset>div {
     margin: 10px 0px 10px 0px;
     padding: 10px 0px 10px 10px;
 }
+
+/* https://piazza.com/class/iwo7dstinb24o0?cid=68  the content at this link was use for the borders*/ 
 
 input[type="number"] {
     width: 190px;
