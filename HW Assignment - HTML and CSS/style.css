@@ -24,11 +24,9 @@ dt {
 
 .outer-content {
     background: #FFB6C1;
-    width: 51%;
-    padding-top: 1%;
-    padding-right: 12%;
-    padding-bottom: 1%;
-    padding-left: 12%;
+    width: 75%;
+    padding-top: 10px;
+    padding-bottom: 10px;
     margin-top: 20px;
  }
 
