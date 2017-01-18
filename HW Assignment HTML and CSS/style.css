@@ -1,0 +1,75 @@
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+}
+
+caption {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+tbody th {
+    font-weight: normal;
+    font-style: italic;
+}
+
+dt {
+    font-weight: bold;
+}
+
+.outer-content {
+    background: #FFB6C1;
+    width: 51%;
+    padding-top: 1%;
+    padding-right: 12%;
+    padding-bottom: 1%;
+    padding-left: 12%;
+    margin-top: 20px;
+ }
+
+ .inner-content {
+    background: #ADD8E6;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance:textfield;
+}
+
+input[type="radio"], input[type="submit"] {
+    margin: 10px;
+}
+
+fieldset>div {
+    border-style: solid;
+    border-width: thin;
+    border-color: #979899;
+    margin: 10px 0px 10px 0px;
+    padding: 10px 0px 10px 10px;
+}
+
+input[type="number"] {
+    width: 190px;
+}
+
+tbody tr:nth-of-type(odd) {
+    background: #90EE90
+}
+
+tbody tr:nth-of-type(even) {
+    background: #ADD8E6
+}

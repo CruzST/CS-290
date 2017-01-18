@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>HW Assignment: HTML/CSS</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <table>
+            <caption>Heros and their attributes</caption>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Batmam</th>
+                    <th>Superman</th>
+                    <th>Spiderman</th>
+                    <th>Antman</th>
+                    <th>Ironman</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <th>Fly</th>
+                    <td>Kinda</td>
+                    <td>Yes</td>
+                    <td>Kinda</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                </tr>
+
+                <tr>
+                    <th>Human</th>
+                    <td>Yes</td>
+                    <td>No</td>
+                    <td>Kinda</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+
+                <tr>
+                    <th>Gadgets</th>
+                    <td>Yes</td>
+                    <td>No</td>
+                    <td>Kinda</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+
+                <tr>
+                    <th>Rich</th>
+                    <td>Yes</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                </tr>
+
+                <tr>
+                    <th>Humble</th>
+                    <td>Kinda</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td>Kinda</td>
+                    <td>No</td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td colspan="2">The best superhero is:</td>
+                    <td colspan="4">Superman, because his cape is red!</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <dl>
+            <dt>Dirtbike</dt>
+            <dd>CRF450</dd>
+            <dt>Car</dt>
+            <dd>Porsche 991 gt2 rs</dd>
+            <dt>State</dt>
+            <dd>California</dd>
+            <dt>Company</dt>
+            <dd>Google</dd>
+        </dl>
+
+        <div class="outer-content">
+            <div class="inner-content">Hello world!</div>
+        </div>
+
+        <form action=" http://classes.engr.oregonstate.edu/eecs/winter2015/cs290-400/tools/class-content/form_tests/check_request.php" method="get">
+            <fieldset>
+                <legend>Some GET Data</legend>
+
+                <div>
+                <label>Text here:
+                    <input type="text" name="text_input" size="30" maxlength="100">
+                </label>
+                </div>
+
+                <div>
+                <label>Number here:
+                    <input type="number" name="numerical_input" maxlength="100">
+                </label>
+                </div>
+
+                <div>
+                <label>Password here:
+                    <input type="password" name="password_input" size="30" maxlength="100">
+                </label>
+                </div>
+
+                <div>
+                <label> Select between:
+                <br>
+                    <input type="radio" name="candy" value="snickers">Snickers
+                </label>
+
+                <label>
+                <br>
+                    <input type="radio" name="candy" value="skittles">Skittles
+                </label>
+
+                <label>
+                <br>
+                    <input type="radio" name="candy" value="mentos">Mentos
+                </label>
+
+                <label>
+                <br>
+                    <input type="submit" value="Submit">
+                </label>
+                </div>
+            </fieldset>
+        </form>
+
+        <form action=" http://classes.engr.oregonstate.edu/eecs/winter2015/cs290-400/tools/class-content/form_tests/check_request.php" method="post">
+            <fieldset>
+                <legend>Some POST Data</legend>
+
+                <div>
+                <label>Text here:
+                    <input type="text" name="text_input" size="30" maxlength="100">
+                </label>
+                </div>
+
+                <div>
+                <label>Number here:
+                    <input type="number" name="numerical_input" maxlength="100">
+                </label>
+                </div>
+
+                <div>
+                <label>Password here:
+                    <input type="password" name="password_input" size="30" maxlength="100">
+                </label>
+                </div>
+
+                <div>
+                <label> Select between:
+                <br>
+                    <input type="radio" name="candy" value="snickers">Snickers
+                </label>
+
+                <label>
+                <br>
+                    <input type="radio" name="candy" value="skittles">Skittles
+                </label>
+
+                <label>
+                <br>
+                    <input type="radio" name="candy" value="mentos">Mentos
+                </label>
+
+                <label>
+                <br>
+                    <input type="submit" value="Submit">
+                </label>
+                </div>
+            </fieldset>
+        </form>
+    </body>
+</html>
