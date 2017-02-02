@@ -22,5 +22,5 @@ function testList() {
 
 testList();
 
-// I a lot of spent time review the article below and the above code reflects it.
+// I spent a lot of spent time review the article below and the above code reflects it.
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
