@@ -65,6 +65,7 @@ function typeComparator(auto1, auto2) {
     var type1 = auto1.type.toLowerCase();
     var type2 = auto2.type.toLowerCase();
     var types = ["roadster", "pickup", "suv", "wagon"];
+    
     if (type1 == type2) {
         return auto1.year > auto2.year;
     }
@@ -105,7 +106,7 @@ var printResults = function() {
     var sortedByType = sortArr(typeComparator, automobiles);
 
     for (var k = 0; k < sortedByType.length; k++) {
-        sortedByType[k].logMe(false);
+        sortedByType[k].logMe(true);
     }
     console.log("*****");
 
