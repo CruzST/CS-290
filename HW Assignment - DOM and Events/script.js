@@ -1,8 +1,6 @@
+var place = 0;
 
-// the location of the "selected" cell
-//var location = 0;
-
-function buildTable(rows,columns) {
+function buildTable(rows,columns){
 
     // get reference for html body
     var body = document.body;
@@ -16,7 +14,7 @@ function buildTable(rows,columns) {
     // create table header row
     var headerRow = document.createElement("tr");
 
-    for (var j = 1; j <= columns; j++) {
+    for (var j = 1; j <= columns; j++){
 
         // create th element and text node
         // make text node the contents of th
@@ -32,33 +30,26 @@ function buildTable(rows,columns) {
     tableBody.appendChild(headerRow);
 
     // create data cells
-    for (var k = 1; k < rows; k++) {
-
-        // cell counter
-        //var cellCounter = 0;
+    for (var k = 1; k < rows; k++){
 
         // create a table row
         var row = document.createElement("tr");
 
-        for (var l = 1; l <= columns; l++) {
+        for (var l = 1; l <= columns; l++){
 
             // create td element and text node
             // make text node the contents of td
             // put td at end of table row
             var cell = document.createElement("td");
             cell.setAttribute("align", "center");
-            //cell.setAttribute("id", "cell "+cellCounter);
+
             var cellText = document.createTextNode(l + "," + k);
             cell.appendChild(cellText);
             row.appendChild(cell);
-
-            //cellCounter++;
         }
 
         // add row to end of table body
         tableBody.appendChild(row);
-
-        //cellCounter++;
     }
 
     // put tableBody in the table
@@ -70,11 +61,14 @@ function buildTable(rows,columns) {
     // set border attribute of table to 2;
     table.setAttribute("border", "2");
 
-    // set location border to solid
-    //document.getElementsByTagName("td")[location].style.border = "solid";
-}
+    // set top left cell to "selected" with solid border
+    document.getElementsByTagName("td")[0].style.border = "solid";
 
+    // set id of selected td
+    document.getElementsByTagName("td")[0].setAttribute("id", "selected");
+}
 buildTable(4,4);
+
 
 // Full disclosure: I researched how to build the table by reviewing the following materials:
 //                  1) lecture content and lecture videos
@@ -90,7 +84,7 @@ buildTable(4,4);
 // through the code and understand what was happening.
 
 
-function createButtons() {
+function createButtons(){
 
     // create array of directions
     var directions = ["Up", "Down", "Left", "Right", "Mark Cell"];
@@ -107,34 +101,121 @@ function createButtons() {
         document.body.appendChild(button);
     }
 }
-
 createButtons();
 
 /*
-function move() {
+var location = function(){
+    var tableCellText = ["1,1", "2,1", "3,1", "4,1",
+        "1,2", "2,2", "3,2", "4,2",
+        "1,3", "2,3", "3,3", "4,3"];
+
+    var selectedCell = document.getElementById("selected").textContent;
+
+    var position;
+
+    for (var i = 0; i < tableCellText.length; i++){
+        if (selectedCell == tableCellText[i]){
+            position = i;
+        }
+    }
+
+    return position;
+};
+*/
+
+function move(){
 
     // create boundary arrays
     var leftBoundary = [0,4,8];
     var rightBoundary = [3,7,11];
 
+    // bool variable
+    var onBoundary;
+
     if (this.id == "Up") {
 
-        //if (location)
+        if (place - 4 >= 0){
+            // remove border
+            document.getElementsByTagName("td")[place].style.border = "thin solid";
+
+            // set new location
+            place = place - 4;
+
+            // add border
+            document.getElementsByTagName("td")[place].style.border = "solid";
+        }
+    }
+    else if (this.id == "Down"){
+
+        if (place + 4 <= 11){
+            // remove border
+            document.getElementsByTagName("td")[place].style.border = "thin solid";
+
+            // set new location
+            place = place + 4;
+
+            // add border
+            document.getElementsByTagName("td")[place].style.border = "solid";
+        }
 
     }
+    else if (this.id == "Right"){
 
-    if (this.id == "Down") {
+        for (var i = 0; i < rightBoundary.length; i++){
 
+            if (place == rightBoundary[i]){
+                onBoundary = 1
+                i = leftBoundary.length;
+            } else {
+                onBoundary = 0;
+            }
+        }
+
+        if (!onBoundary){
+
+            // remove border
+            document.getElementsByTagName("td")[place].style.border = "thin solid";
+
+            // set new location
+            place++;
+
+            // add border
+            document.getElementsByTagName("td")[place].style.border = "solid";
+        }
     }
+    else if (this.id == "Left"){
 
-    if (this.id == "Right") {
+        for (var j = 0; j < leftBoundary.length; j++){
 
-    }
+            if (place == leftBoundary[j]){
+                onBoundary = 1
+                j = leftBoundary.length;
+            } else {
+                onBoundary = 0;
+            }
+        }
 
-    if (this.id == "Left") {
+        if (!onBoundary){
 
+            // remove border
+            document.getElementsByTagName("td")[place].style.border = "thin solid";
+
+            // set new location
+            place--;
+
+            // add border
+            document.getElementsByTagName("td")[place].style.border = "solid";
+        }
     }
 }
-*/
-//console.log(location);
-//document.getElementById("Right").addEventListener("click", move);
+
+
+function markCell(){
+    document.getElementsByTagName("td")[place].style.background = "yellow";
+}
+
+document.getElementById("Up").addEventListener("click", move);
+document.getElementById("Down").addEventListener("click", move);
+document.getElementById("Right").addEventListener("click", move);
+document.getElementById("Left").addEventListener("click", move);
+document.getElementById("Mark Cell").addEventListener("click", markCell);
