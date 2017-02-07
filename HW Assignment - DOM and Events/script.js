@@ -1,4 +1,5 @@
-var place = 0;
+(function() { // Begin scoping function
+    var place = 0; // Global to your code, invisible outside the scoping function
 
 function buildTable(rows,columns){
 
@@ -219,3 +220,5 @@ document.getElementById("Down").addEventListener("click", move);
 document.getElementById("Right").addEventListener("click", move);
 document.getElementById("Left").addEventListener("click", move);
 document.getElementById("Mark Cell").addEventListener("click", markCell);
+
+})();
