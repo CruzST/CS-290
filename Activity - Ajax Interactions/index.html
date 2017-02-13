@@ -18,7 +18,20 @@
                 document.getElementById("temp").textContent = response.main.temp;
                 document.getElementById("hum").textContent = response.main.humidity;
                 event.preventDefault();
-            })
+            });
+
+            document.getElementById("cityStateSubmit").addEventListener("click", function (event)
+            {
+                var req = new XMLHttpRequest();
+                var cityState = document.getElementById("cityState").value;
+                req.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=" + cityState + "&units=imperial" + "&appid=" + apiKey, false);
+                req.send(null);
+                var response = JSON.parse(req.responseText);
+                document.getElementById("cityName").textContent = response.name;
+                document.getElementById("temp").textContent = response.main.temp;
+                document.getElementById("hum").textContent = response.main.humidity;
+                event.preventDefault();
+            });
         }
     </script>
 </head>
@@ -29,6 +42,15 @@
         <label for="zipCountry">Zip code, Country</label>
         <input type="text" name="zipCountry" id="zipCountry">
         <input type="submit" id="zipCountrySubmit">
+    </fieldset>
+</form>
+
+<form>
+    <fieldset>
+        <legend>Weather by city and state</legend>
+        <label for="cityState">City, State</label>
+        <input type="text" name="cityState" id="cityState">
+        <input type="submit" id="cityStateSubmit">
     </fieldset>
 </form>
 <div>
