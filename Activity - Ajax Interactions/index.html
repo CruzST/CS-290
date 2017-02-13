@@ -1,39 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script>
-        var apiKey = "fa7d80c48643dfadde2cced1b1be6ca1";
-        document.addEventListener("DOMContentLoaded", bindButtons);
-
-        function bindButtons()
-        {
-            document.getElementById("zipCountrySubmit").addEventListener("click", function (event)
-            {
-                var req = new XMLHttpRequest();
-                var zipCountry = document.getElementById("zipCountry").value;
-                req.open("GET", "http://api.openweathermap.org/data/2.5/weather?zip=" + zipCountry + "&units=imperial" + "&appid=" + apiKey, false);
-                req.send(null);
-                var response = JSON.parse(req.responseText);
-                document.getElementById("cityName").textContent = response.name;
-                document.getElementById("temp").textContent = response.main.temp;
-                document.getElementById("hum").textContent = response.main.humidity;
-                event.preventDefault();
-            });
-
-            document.getElementById("cityStateSubmit").addEventListener("click", function (event)
-            {
-                var req = new XMLHttpRequest();
-                var cityState = document.getElementById("cityState").value;
-                req.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=" + cityState + "&units=imperial" + "&appid=" + apiKey, false);
-                req.send(null);
-                var response = JSON.parse(req.responseText);
-                document.getElementById("cityName").textContent = response.name;
-                document.getElementById("temp").textContent = response.main.temp;
-                document.getElementById("hum").textContent = response.main.humidity;
-                event.preventDefault();
-            });
-        }
-    </script>
+    <script src="script.js"></script>
 </head>
 <body>
 <form>
@@ -54,12 +22,30 @@
     </fieldset>
 </form>
 <div>
-    <h2>Results</h2>
+    <h2>Weather results</h2>
     <ul>
         <li><span>City: </span><span id="cityName"></span></li>
         <li><span>Temperature: </span><span id="temp"></span></li>
         <li><span>Humidity: </span><span id="hum"></span></li>
     </ul>
 </div>
+
+<form>
+    <fieldset>
+        <legend>Submit to http://httpbin.org/post</legend>
+        <label for="posting">What to post</label>
+        <input type="text" name="posting" id="posting">
+        <input type="submit" id="postingSubmit">
+    </fieldset>
+</form>
+<div>
+    <h2>Post results</h2>
+    <ul>
+        <li><span>Submitted: </span><span id="submitted"></span></li>
+        <li><span>Returned: </span><span id="returned"></span></li>
+    </ul>
+</div>
+
+
 </body>
 </html>
