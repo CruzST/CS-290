@@ -1,6 +1,12 @@
 <h1>{{callType}} Request Received</h1>
 <ul>
-  {{#each data}}
-    <li>{{this.key}}: {{this.val}}
+  {{#each Bdata}}
+    <li>{{this.key}}: {{this.val}}</li>
+  {{/each}}
+</ul>
+
+<ul>
+    {{#each Qdata}}
+    <li>{{this.key}}: {{this.val}}</li>
   {{/each}}
 </ul>
