@@ -1,3 +1,0 @@
-ethereum.org
-https://github.com/ethereum/wiki/wiki/JavaScript-API
-https://live.ether.camp/
