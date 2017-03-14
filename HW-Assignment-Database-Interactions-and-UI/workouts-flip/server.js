@@ -7,7 +7,7 @@ var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', 3000);
+app.set('port', 9900);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -23,7 +23,7 @@ app.get('/get-workouts', function(req, res) {
   var content = {};
   mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields) {
       if (err) {
-        console.log(err);
+        next(err);
         return;
       }
       content.results = JSON.stringify(rows);
@@ -35,7 +35,7 @@ app.get('/get-a-workout', function(req, res) {
   var content = {};
   mysql.pool.query('SELECT * FROM workouts WHERE id=?', [req.query.id], function(err, rows, fields) {
       if (err) {
-        console.log(err);
+        next(err);
         return;
       }
       content.results = JSON.stringify(rows);
@@ -44,15 +44,9 @@ app.get('/get-a-workout', function(req, res) {
 });
 
 app.get('/submit',function(req,res,next){
-  console.log('query parameters: ' + JSON.stringify(req.query));
-  console.log('name:', req.query.name);
-  console.log('weight:', req.query.weight);
-  console.log('weightUnit:', req.query.weightUnit);
-  console.log('reps:', req.query.reps);
-  console.log('date:', req.query.date);
-
-  var context = {};
-  mysql.pool.query("INSERT INTO workouts (`name`, `weight`, `lbs`, `reps`, `date`) VALUES (?,?,?,?,?)",
+  if (req.query.name != ''){
+    var context = {};
+    mysql.pool.query("INSERT INTO workouts (`name`, `weight`, `lbs`, `reps`, `date`) VALUES (?,?,?,?,?)",
     [req.query.name, req.query.weight, req.query.weightUnit, req.query.reps, req.query.date],
     function(err, result){
       if(err){
@@ -60,10 +54,10 @@ app.get('/submit',function(req,res,next){
         return;
       }
       context.results = "Inserted id " + result.insertId;
-      console.log('context.results:', context.results)
-      // res.render('home',context);
       res.status(200).json(result.insertId);
     });
+  }
+
 });
 
 app.get('/delete',function(req,res,next){
@@ -82,13 +76,8 @@ app.get('/edit-row', function(req, res) {
       res.render('edit');
   });
 
-app.get('/hello', function(req,res) {
-  console.log("inside hello");
-  res.sendStatus(200);
-})
 
 app.get('/edit-save',function(req,res,next){
-  console.log("in edit save");
   var context = {};
   mysql.pool.query("SELECT * FROM workouts WHERE id=?", [req.query.id], function(err, result){
     if(err){
